@@ -12,4 +12,14 @@ If the change being made is a "Minor" change, it will change the push the tag in
 
 Prerequistes :-
 
-1. 
+1. Ensure the create a tag & export tag additional behaviours are enabled in the "Source Code Management" section
+![image](https://github.com/user-attachments/assets/6f1f80f5-d6a8-40fc-9113-3a0cad5bd72f)
+This will allow jenkins to create a tag, export that as $GIT_TAG_NAME as a environment variable in the jenkins build pipeline session. 
+
+2. In the "General" section, ensure "This Build is parameterized" is checked, and Include this "Choice parameter" as shown below
+![image](https://github.com/user-attachments/assets/85b1decb-270e-4632-a794-884eed500a8b)
+
+3. Now, include the script.sh provided, in your execute shell, the script will take care of the rest....
+
+
+NOTE: Jenkins create the $GIT_TAG_NAME environment variable using a deafult-naming-convention (jenkins-$JOB_NAME-$BUILD_NUMBER), the script changes the name of this particular git_tag_name inside the execute shell sessio, outside the shell, the tag_name environment variable will be labeled by the default-naming-pattern.
